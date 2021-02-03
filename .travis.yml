@@ -26,16 +26,16 @@ jobs:
       before_script:
         - cd sample-application-backend
       script:
-        - echo "Docker build ..."
-        - echo "Docker login ..."
-        - echo "Docker push ..."
+        - docker-compose build
+        - docker login -u DOCKER_USERNAME -p DOCKER_PASSWORD
+        - docker push aymrick/devops-sample-app
     - stage: "Package"
       before_script:
         - cd sample-application-frontend
       script:
-        - echo "Docker build ..."
-        - echo "Docker login ..."
-        - echo "Docker push ..."
+        - docker-compose build
+        - docker login -u DOCKER_USERNAME -p DOCKER_PASSWORD
+        - docker push aymrick/devops-sample-app
 cache:
   directories:
     - "$HOME/.m2/repository"
