@@ -26,16 +26,16 @@ jobs:
       before_script:
         - cd sample-application-backend
       script:
-        - docker-compose build
-        - docker login -u DOCKER_USERNAME -p DOCKER_PASSWORD
-        - docker push aymrick/devops-sample-app
+        - docker build -t aymrick/sample-backend .
+        - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        - docker push aymrick/sample-backend
     - stage: "Package"
       before_script:
         - cd sample-application-frontend
       script:
-        - docker-compose build
-        - docker login -u DOCKER_USERNAME -p DOCKER_PASSWORD
-        - docker push aymrick/devops-sample-app
+        - docker build -t aymrick/sample-frontend .
+        - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        - docker push aymrick/sample-frontend
 cache:
   directories:
     - "$HOME/.m2/repository"
