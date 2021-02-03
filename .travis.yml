@@ -7,7 +7,7 @@ stages:
 
 addons:
   sonarcloud:
-    organization: "Aymrick"
+    organization: "aymrick"
     token: "$SONARCLOUD_TOKEN"
 
 jobs:
