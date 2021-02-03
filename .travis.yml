@@ -5,11 +5,6 @@ stages:
   - "Build and Test"
   - "Package"
 
-addons:
-  sonarcloud:
-    organization: "aymrick"
-    token: "$SONARCLOUD_TOKEN"
-
 jobs:
   include:
     - stage: "Build and Test"
@@ -48,3 +43,8 @@ cache:
 
 services:
   - docker
+
+addons:
+  sonarcloud:
+    organization: "aymrick"
+    token: "$SONARCLOUD_TOKEN"
