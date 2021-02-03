@@ -14,7 +14,11 @@ jobs:
         - cd sample-application-backend
       script:
         - echo "Maven build"
-        - echo "Run test coverage and Quality Gate"
+        - mvn clean verify org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=devops-2021
+      addons:
+        sonarcloud:
+          organization: "Aymrick"
+          token: "$SONARCLOUD_TOKEN"
     - stage: "Build and Test"
       language: node.js
       node_js: "12.20"
