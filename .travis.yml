@@ -5,6 +5,11 @@ stages:
   - "Build and Test"
   - "Package"
 
+addons:
+  sonarcloud:
+    organization: "Aymrick"
+    token: "$SONARCLOUD_TOKEN"
+
 jobs:
   include:
     - stage: "Build and Test"
@@ -15,10 +20,6 @@ jobs:
       script:
         - echo "Maven build"
         - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=Aymrick_sample-application-students
-      addons:
-        sonarcloud:
-          organization: "Aymrick"
-          token: "$SONARCLOUD_TOKEN"
     - stage: "Build and Test"
       language: node.js
       node_js: "12.20"
